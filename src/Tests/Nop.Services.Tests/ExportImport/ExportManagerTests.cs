@@ -11,7 +11,6 @@ using Nop.Core.Domain.Payments;
 using Nop.Core.Domain.Shipping;
 using Nop.Core.Domain.Tax;
 using Nop.Services.Catalog;
-using Nop.Services.Configuration;
 using Nop.Services.Directory;
 using Nop.Services.ExportImport;
 using Nop.Services.Media;
@@ -22,6 +21,8 @@ using Nop.Services.Tax;
 using Nop.Services.Vendors;
 using NUnit.Framework;
 using Rhino.Mocks;
+using Nop.Services.Common;
+using Nop.Services.Customers;
 
 namespace Nop.Services.Tests.ExportImport
 {
@@ -43,6 +44,8 @@ namespace Nop.Services.Tests.ExportImport
         private ITaxCategoryService _taxCategoryService;
         private IMeasureService _measureService;
         private CatalogSettings _catalogSettings;
+        private IGenericAttributeService _genericAttributeService;
+        private ICustomerAttributeFormatter _customerAttributeFormatter;
 
         [SetUp]
         public new void SetUp()
@@ -61,13 +64,16 @@ namespace Nop.Services.Tests.ExportImport
             _taxCategoryService = MockRepository.GenerateMock<ITaxCategoryService>();
             _measureService = MockRepository.GenerateMock<IMeasureService>();
             _catalogSettings=new CatalogSettings();
+            _genericAttributeService = MockRepository.GenerateMock<IGenericAttributeService>();
+            _customerAttributeFormatter = MockRepository.GenerateMock<ICustomerAttributeFormatter>();
 
             _exportManager = new ExportManager(_categoryService,
-                _manufacturerService, _productAttributeService, 
+                _manufacturerService, _productAttributeService,
                 _pictureService, _newsLetterSubscriptionService,
-                _storeService, _workContext, _productEditorSettings, 
+                _storeService, _workContext, _productEditorSettings,
                 _vendorService, _productTemplateService, _shippingService,
-                _taxCategoryService, _measureService, _catalogSettings);
+                _taxCategoryService, _measureService, _catalogSettings,
+                 _genericAttributeService, _customerAttributeFormatter);
         }
 
         //[Test]
