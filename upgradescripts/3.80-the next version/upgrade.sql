@@ -521,6 +521,15 @@ set @resources='
   <LocaleResource Name="ShoppingCart.AvailabilityRange">
     <Value>Available in {0}</Value>
   </LocaleResource>
+  <LocaleResource Name="Account.AccountActivation.AlreadyActivated">
+    <Value>Your account already has been activated</Value>
+  </LocaleResource>
+  <LocaleResource Name="Account.PasswordRecovery.PasswordAlreadyHasBeenChanged">
+    <Value>Your password already has been changed. For changing it once more, you need to again recover the password.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Newsletter.ResultAlreadyDeactivated">
+    <Value>Your subscription already has been deactivated.</Value>
+  </LocaleResource>
 </Language>
 '
 
